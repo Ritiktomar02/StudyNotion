@@ -1,26 +1,58 @@
-const express=require("express");
-const app=express();
+const express = require("express");
 const cookieParser = require("cookie-parser");
-const cors=require("cors");
-const fileupload=require("express-fileupload");
+const cors = require("cors");
+const fileUpload = require("express-fileupload");
 require("dotenv").config();
+const app = express();
 
-const PORT=process.env.PORT || 4000
+const PORT = process.env.PORT || 4000;
 
+
+const userRoutes = require("./routes/User");
+const profileRoutes = require("./routes/Profile");
+const paymentRoutes = require("./routes/Payments");
+const courseRoutes = require("./routes/Course");
+
+
+
+//database connect
+require("./config/database").connect();
+//middlewares
 app.use(express.json());
 app.use(cookieParser());
-app.use(cors());
-app.use(fileupload({
-    useTempFiles:true,
-    tempFileDir:'/tmp/'
-}))
+app.use(
+	cors({
+		origin:"http://localhost:3000",
+		credentials:true,
+	})
+)
 
-const approute=require("./routes/Useroute");
-app.use("/api/v1",approute);
-
-require("./config/database").connect();
+app.use(
+	fileUpload({
+		useTempFiles:true,
+		tempFileDir:"/tmp",
+	})
+)
+//cloudinary connection
 require("./config/cloudinary").cloudinaryconnect();
 
-app.listen(PORT,()=>{
-    console.log(`App is running on ${PORT}`);
+//routes
+app.use("/api/v1/auth", userRoutes);
+app.use("/api/v1/profile", profileRoutes);
+app.use("/api/v1/course", courseRoutes);
+app.use("/api/v1/payment", paymentRoutes);
+
+
+//def route
+
+app.get("/", (req, res) => {
+	return res.json({
+		success:true,
+		message:'Your server is up and running....'
+	});
+});
+
+app.listen(PORT, () => {
+	console.log(`App is running at ${PORT}`)
 })
+
