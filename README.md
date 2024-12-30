@@ -4,8 +4,8 @@
 # Project Description
 StudyNotion is a fully functional ed-tech platform that enables users to create, consume, and rate educational content. The platform is built using the MERN stack, which includes ReactJS, NodeJS, MongoDB, and ExpressJS. StudyNotion aims to provide:
 
-.A seamless and interactive learning experience for students, making education more accessible and engaging.
-.A platform for instructors to showcase their expertise and connect with learners across the globe. In the following sections, we will cover the technical details of the platform, including:
+A seamless and interactive learning experience for students, making education more accessible and engaging.
+A platform for instructors to showcase their expertise and connect with learners across the globe. In the following sections, we will cover the technical details of the platform, including:
 
 1. System architecture: The high-level overview of the platform's components and diagrams of the architecture.
 2. Front-end: The description of the front-end architecture, user interface design, features, and functionalities of the front-end, and frameworks, libraries, and tools used.
@@ -39,37 +39,38 @@ Here is a high-level diagram that illustrates the architecture of the StudyNotio
 The front end of StudyNotion has all the necessary pages that an ed-tech platform should have. Some of these pages are:
 
 # For Students:
-.Homepage: This page will have a brief introduction to the platform, as well as links to the course list and user details.
 
-.Course List: This page will have a list of all the courses available on the platform, along with their descriptions and ratings.
+Homepage: This page will have a brief introduction to the platform, as well as links to the course list and user details.
 
-.Wishlist: This page will display all the courses that a student has added to their wishlist.
+Course List: This page will have a list of all the courses available on the platform, along with their descriptions and ratings.
 
-.Cart Checkout: This page will allow the user to complete the course purchase.
+Wishlist: This page will display all the courses that a student has added to their wishlist.
 
-.Course Content: This page will have the course content for a particular course, including videos, and other related material.
+Cart Checkout: This page will allow the user to complete the course purchase.
 
-.User Details: This page will have details about the student's account, including their name, email, and other relevant information.
+Course Content: This page will have the course content for a particular course, including videos, and other related material.
 
-.User Edit Details: This page will allow the student to edit their account details.
+User Details: This page will have details about the student's account, including their name, email, and other relevant information.
+
+User Edit Details: This page will allow the student to edit their account details.
 
 # For Instructors:
 
-.Dashboard: This page will have an overview of the instructor's courses, as well as the ratings and feedback for each course.
+Dashboard: This page will have an overview of the instructor's courses, as well as the ratings and feedback for each course.
 
-.Insights: This page will have detailed insights into the instructor's courses, including the number of views, clicks, and other relevant metrics.
+Insights: This page will have detailed insights into the instructor's courses, including the number of views, clicks, and other relevant metrics.
 
-.Course Management Pages: These pages will allow the instructor to create, update, and delete courses, as well as manage the course content and pricing.
+Course Management Pages: These pages will allow the instructor to create, update, and delete courses, as well as manage the course content and pricing.
 
-.View and Edit Profile Details: These pages will allow the instructor to view and edit their account details. PAGE 3 For Admin (this is for future scope):
+View and Edit Profile Details: These pages will allow the instructor to view and edit their account details. PAGE 3 For Admin (this is for future scope):
 
-.Dashboard: This page will have an overview of the platform's courses, instructors, and students.
+Dashboard: This page will have an overview of the platform's courses, instructors, and students.
 
-.Insights: This page will have detailed insights into the platform's metrics, including the number of registered users, courses, and revenue.
+Insights: This page will have detailed insights into the platform's metrics, including the number of registered users, courses, and revenue.
 
-.Instructor Management: This page will allow the admin to manage the platform's instructors, including their account details, courses, and ratings.
+Instructor Management: This page will allow the admin to manage the platform's instructors, including their account details, courses, and ratings.
 
-.Other Relevant Pages: The admin will also have access to other relevant pages, such as user management and course management pages.
+Other Relevant Pages: The admin will also have access to other relevant pages, such as user management and course management pages.
 
 To build the front end, we use frameworks and libraries such as ReactJS, We also use CSS and Tailwind, which are styling frameworks that help make the user interface look good and responsive. To manage the state of the application, we use Redux, which is a popular state management library for React.
 
@@ -155,6 +156,5 @@ The StudyNotion platform's API is designed following the REST architectural styl
   
 In conclusion, the REST API design for the StudyNotion ed-tech platform is a crucial part of the project. The API endpoints and their functionalities are designed to ensure seamless communication between the front-end and back-end of the application. By following RESTful principles, the API will be scalable, maintainable, and reliable. The sample API requests and responses provided above illustrate how each endpoint will function and what kind of data it will accept or return. With this API design, StudyNotion will be able to provide a smooth user experience while ensuring security and stability.
 
-About
-StudyNotion is a fully functional ed-tech platform that enables users to create, consume, and rate educational content. The platform is built using the MERN stack, which includes ReactJS, NodeJS, MongoDB, and ExpressJS.
+
 
