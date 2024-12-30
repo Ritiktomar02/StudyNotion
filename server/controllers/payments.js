@@ -4,7 +4,6 @@ const crypto = require("crypto")
 const User = require("../models/User")
 const mailSender = require("../utils/mailSender")
 const mongoose = require("mongoose")
-require("dotenv").config()
 const {
   courseEnrollmentEmail,
 } = require("../mail/templates/courseEnrollmentEmail")
@@ -13,71 +12,64 @@ const CourseProgress = require("../models/CourseProgress")
 
 // Capture the payment and initiate the Razorpay order
 exports.capturePayment = async (req, res) => {
-  const { courses } = req.body;
-  const userId = req.user.id;
-   console.log("Courses: ", courses);
-   console.log("User ID: ", userId);
-  if (!courses || courses.length === 0) {
-    return res.json({ success: false, message: "Please Provide Course ID" });
+  const { courses } = req.body
+  const userId = req.user.id
+  if (courses.length === 0) {
+    return res.json({ success: false, message: "Please Provide Course ID" })
   }
 
-  let total_amount = 0;
+  let total_amount = 0
 
   for (const course_id of courses) {
-    let course;
+    let course
     try {
       // Find the course by its ID
-      course = await Course.findById(course_id);
+      course = await Course.findById(course_id)
+
+      // If the course is not found, return an error
       if (!course) {
-        return res.status(200).json({ success: false, message: "Could not find the Course" });
+        return res
+          .status(200)
+          .json({ success: false, message: "Could not find the Course" })
       }
 
       // Check if the user is already enrolled in the course
-      
-      const uid = new mongoose.Types.ObjectId(userId);
-      console.log("UID: ", uid);
+      const uid = new mongoose.Types.ObjectId(userId)
       if (course.studentsEnroled.includes(uid)) {
-        return res.status(200).json({ success: false, message: "Student is already Enrolled" });
+        return res
+          .status(200)
+          .json({ success: false, message: "Student is already Enrolled" })
       }
 
       // Add the price of the course to the total amount
-      total_amount += course.price;
+      total_amount += course.price
     } catch (error) {
-      console.log("Error finding course:", error);
-      return res.status(500).json({ success: false, message: error.message });
+      console.log(error)
+      return res.status(500).json({ success: false, message: error.message })
     }
-  }
-
-  // Ensure the total amount is a positive number
-  if (total_amount <= 0) {
-    return res.status(400).json({ success: false, message: "Invalid total amount" });
   }
 
   const options = {
-    amount: total_amount * 100,  // Razorpay expects the amount in paise
+    amount: total_amount * 100,
     currency: "INR",
-    receipt: `receipt_${new Date().getTime()}`,  // Use a more meaningful receipt
-  };
-  console.log(options);
-  console.log("Instance: ", instance);
+    receipt: Math.random(Date.now()).toString(),
+  }
+
   try {
     // Initiate the payment using Razorpay
-    const paymentResponse = await instance.orders.create(options);
-    console.log("Payment Response: ", paymentResponse);
-    
-    if (!paymentResponse || paymentResponse.error) {
-      throw new Error(paymentResponse.error_description || "Payment initiation failed");
-    }
-
+    const paymentResponse = await instance.orders.create(options)
+    console.log(paymentResponse)
     res.json({
       success: true,
       data: paymentResponse,
-    });
+    })
   } catch (error) {
-    console.log("Payment initiation failed:", error);
-    res.status(500).json({ success: false, message: "Could not initiate order. " + error.message });
+    console.log(error)
+    res
+      .status(500)
+      .json({ success: false, message: "Could not initiate order." })
   }
-};
+}
 
 // verify the payment
 exports.verifyPayment = async (req, res) => {

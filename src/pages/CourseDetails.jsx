@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react"
 import { BiInfoCircle } from "react-icons/bi"
 import { HiOutlineGlobeAlt } from "react-icons/hi"
-import ReactMarkdown from 'react-markdown';
+import { ReactMarkdown } from "react-markdown/lib/react-markdown"
 import { useDispatch, useSelector } from "react-redux"
 import { useNavigate, useParams } from "react-router-dom"
 
@@ -26,7 +26,7 @@ function CourseDetails() {
 
   // Getting courseId from url parameter
   const { courseId } = useParams()
-   console.log(`course id: ${courseId}`)
+  // console.log(`course id: ${courseId}`)
 
   // Declear a state to save the course details
   const [response, setResponse] = useState(null)
@@ -102,7 +102,6 @@ function CourseDetails() {
   } = response.data?.courseDetails
 
   const handleBuyCourse = () => {
-    
     if (token) {
       BuyCourse(token, [courseId], user, navigate, dispatch)
       return
