@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 require("dotenv").config();
 
-const { MONGODB_URL } = process.env;
+const  MONGODB_URL  = "mongodb+srv://ritiktomar0209:fKnK8Vjmd3GoE47h@cluster0.xwgrg.mongodb.net/Studynotion";
 
 exports.connect = () => {
 	mongoose
