@@ -10,8 +10,6 @@ exports.connect = () => {
 
     mongoose
         .connect(MONGODB_URL, {
-            useNewUrlParser: true,
-            useUnifiedTopology: true,
             serverSelectionTimeoutMS: 30000, // 30 seconds timeout for database server selection
         })
         .then(() => {
