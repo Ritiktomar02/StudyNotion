@@ -1,4 +1,4 @@
-const BASE_URL = "https://studynotion-frontend-eight-sigma.vercel.app/api/v1"
+const BASE_URL = "https://studynotion-backend-jowy.onrender.com/api/v1";
 
 // AUTH ENDPOINTS
 export const endpoints = {
