@@ -33,7 +33,7 @@ function ReviewSlider() {
     })()
   }, [])
 
-  // console.log(reviews)
+   console.log("Review",reviews)
 
   return (
     <div className="text-white">

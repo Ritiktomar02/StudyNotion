@@ -5,7 +5,9 @@ const  MONGODB_URL  = "mongodb+srv://ritiktomar0209:fKnK8Vjmd3GoE47h@cluster0.xw
 
 exports.connect = () => {
 	mongoose
-		.connect(MONGODB_URL)
+		.connect(MONGODB_URL,{
+			serverSelectionTimeoutMS: 30000,
+		})
 		.then(console.log(`DB Connection Success`))
 		.catch((err) => {
 			console.log(`DB Connection Failed`);

@@ -25,12 +25,17 @@ database.connect();
 // Middlewares
 app.use(express.json());
 app.use(cookieParser());
+
 app.use(
-	cors({
-		origin: "https://studynotion-frontend-eight-sigma.vercel.app" || "http://localhost:3000",
-		credentials: true,
-	})
+    cors({
+        origin: [
+            "https://studynotion-frontend-eight-sigma.vercel.app",
+            "http://localhost:3000"
+        ],
+        credentials: true,
+    })
 );
+
 app.use(
 	fileUpload({
 		useTempFiles: true,
