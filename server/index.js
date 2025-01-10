@@ -28,7 +28,10 @@ app.use(cookieParser());
 
 app.use(
     cors({
-        origin: "*",
+        origin: [
+			"http://localhost:3000",
+			"https://studynotion-frontend-eight-sigma.vercel.app",
+		],
         credentials: true,
     })
 );
